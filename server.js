@@ -71,9 +71,9 @@ app.get( "/", function ( req, res ) {
 
 // Routes
 
-// POST route for saving a new Book to the db and associating it with a Library
+// POST route for saving a new Link to the db and associating it with a Library
 app.post( "/submit", function ( req, res ) {
-  // Create a new Book in the database
+  // Create a new Link in the database
   db.Link.create( req.body )
     .then( function ( dbLink ) {
       // If a Book was created successfully, find one library (there's only one) and push the new Book's _id to the Library's `books` array
@@ -91,12 +91,12 @@ app.post( "/submit", function ( req, res ) {
     } );
 } );
 
-// Route for getting all books from the db
+// Route for getting all links from the db
 app.get( "/links", function ( req, res ) {
-  // Using our Book model, "find" every book in our db
+  // Using our Link model, "find" every book in our db
   db.Link.find( {} )
     .then( function ( dbLink ) {
-      // If any Books are found, send them to the client
+      // If any Links are found, send them to the client
       res.json( dbLink );
     } )
     .catch( function ( err ) {
