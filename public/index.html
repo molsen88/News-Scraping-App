@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      input {
+        display: block;
+        height: 36px;
+        font-size: 24px;
+        margin: 5px
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Enter an article into the library</h1>
+    <form action="/submit" method="post">
+      <input type="text" name="titler" placeholder="title">
+      <input type="text" name="link" placeholder="link">
+
+      <input type="submit">
+      <a href="/articles">See your articles!</a>
+      <a href="/links">See your library of articles!</a>
+      <a href="/populated">See your library, populated with articles!</a>
+    </form>
+    <div id='wrapper'>
+      <h1>Liverpool FC News
+      </h1>
+      <h3>New Articles</h3>
+
+      <div id='article-title'></div>
+      <div id='notes'></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+
+</html>
