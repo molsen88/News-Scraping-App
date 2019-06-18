@@ -23,9 +23,14 @@ app.use( express.json() );
 app.use( express.static( "public" ) );
 
 // Connect to the Mongo DB
-mongoose.connect( "mongodb://localhost/populate", { useNewUrlParser: true } );
+mongoose.connect( "mongodb://localhost/populate" ).then( () => {
+  console.log( "Connected to Database" );
+} ).catch( ( err ) => {
+  console.log( "Not Connected to Database ERROR! ", err );
+} );
+;
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://NewsScraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NewsScraper";
 
 mongoose.connect( MONGODB_URI );
 
