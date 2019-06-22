@@ -2,7 +2,7 @@ var express = require( "express" );
 var logger = require( "morgan" );
 var mongoose = require( "mongoose" );
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Require all models
 var db = require( "./models" );
