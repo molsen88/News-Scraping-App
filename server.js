@@ -53,13 +53,12 @@ app.get( "/", function ( req, res ) {
         title: title,
         summary: summary,
         link: link
-
       } )
-
-
     } )
     res.send( results )
+    console.log( results )
   } )
+
   db.Article.create( { name: "Liverpool FC Articles" } )
     .then( function ( dbArticle ) {
       // If saved successfully, print the new Library document to the console
@@ -79,9 +78,7 @@ app.post( "/submit", function ( req, res ) {
   // Create a new Link in the database
   db.Link.create( req.body )
     .then( function ( dbLink ) {
-      // If a Book was created successfully, find one library (there's only one) and push the new Book's _id to the Library's `books` array
-      // { new: true } tells the query that we want it to return the updated Library -- it returns the original by default
-      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+
       return db.Article.findOneAndUpdate( {}, { $push: { links: dbLink._id } }, { new: true } );
     } )
     .then( function ( dbArticle ) {
